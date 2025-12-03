@@ -1,0 +1,52 @@
+[
+ {
+  "directory": "/home/pjarnac/projects/cpp-09/ex02",
+  "arguments": [
+   "c++",
+   "-Iincludes/",
+   "-Iincludes/",
+   "-I/home/pjarnac/.local/include/",
+   "-MMD",
+   "-MP",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g3",
+   "-std=c++98",
+   "-Weverything",
+   "-Wno-suggest-override",
+   "-Wno-suggest-destructor-override",
+   "-Wno-padded",
+   "-c",
+   "main.cpp",
+   "-o",
+   ".make/build_main/normal/main.o"
+  ],
+  "file": "main.cpp"
+ },
+ {
+  "directory": "/home/pjarnac/projects/cpp-09/ex02",
+  "arguments": [
+   "c++",
+   "-Iincludes/",
+   "-Iincludes/",
+   "-I/home/pjarnac/.local/include/",
+   "-MMD",
+   "-MP",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-g3",
+   "-std=c++98",
+   "-Weverything",
+   "-Wno-suggest-override",
+   "-Wno-suggest-destructor-override",
+   "-Wno-padded",
+   "-c",
+   "PmergeMe.cpp",
+   "-o",
+   ".make/build_main/normal/PmergeMe.o"
+  ],
+  "file": "PmergeMe.cpp"
+ }
+]
