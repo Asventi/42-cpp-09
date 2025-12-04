@@ -13,8 +13,13 @@
 #ifndef PMERGEME_HPP
 # define PMERGEME_HPP
 
-# include <vector>
+typedef std::allocator<int>						int_alloc;
+typedef std::allocator<std::pair<int, int> >	pair_alloc;
+typedef std::allocator<size_t>					idx_alloc;
 
-void	merginsVct(std::vector<int> &t_vct);
+template <template<typename, typename> class T>
+void	mergins(T<int, int_alloc > &t_ctn);
+
+# include "PmergeMe.tpp"
 
 #endif

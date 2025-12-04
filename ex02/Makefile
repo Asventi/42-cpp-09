@@ -27,7 +27,6 @@ DEPS			=	$(patsubst %.cpp, $(BUILD_DIR)%.d, $(SRC))
 # ================ROOT================= #
 
 SRC				=	main.cpp \
-					PmergeMe.cpp \
 
 ## ===============SAMPLE================ #
 #
