@@ -28,7 +28,8 @@ private:
 	void	parseCsv(std::string const &t_path);
 
 	static std::pair<long int, float>	parseLine(std::string const &t_line,
-		                                           std::string const &t_sep);
+		                                           std::string const &t_sep,
+		                                           bool t_limit);
 public:
 	void	processInput(std::string const &t_path);
 	BitcoinExchange();

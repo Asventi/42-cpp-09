@@ -20,7 +20,7 @@
 #include <ctime>
 #include <iostream>
 
-std::pair<long int, float> BitcoinExchange::parseLine(std::string const &t_line, std::string const &t_sep)
+std::pair<long int, float> BitcoinExchange::parseLine(std::string const &t_line, std::string const &t_sep, bool t_limit)
 {
 	std::string				token;
 	float					value;
@@ -34,7 +34,6 @@ std::pair<long int, float> BitcoinExchange::parseLine(std::string const &t_line,
 	token = t_line.substr(0, tokenPos);
 	if (strptime(token.c_str(), "%Y-%m-%d", &tm) != token.c_str() + tokenPos)
 		throw std::logic_error("invalid date format: " + t_line);
-
 	tmT = timegm(&tm);
 	token = t_line.substr(tokenPos + t_sep.length());
 	if (token.length() == 0)
@@ -43,7 +42,7 @@ std::pair<long int, float> BitcoinExchange::parseLine(std::string const &t_line,
 	sstr >> value;
 	if (sstr.fail())
 		throw std::logic_error("invalid number: " + t_line);
-	if (value < 0 || value > 1000)
+	if (value < 0 || (t_limit && value > 1000))
 		throw std::logic_error("number not allowed: " + t_line);
 	if (token.find_first_not_of("0123456789.") != std::string::npos)
 		throw std::logic_error("unrecognized character: " + t_line);
@@ -67,7 +66,7 @@ void	BitcoinExchange::parseCsv(std::string const &t_path)
 	{
 		if (str.length() == 0)
 			continue ;
-		if (!m_data.insert(parseLine(str, ",")).second)
+		if (!m_data.insert(parseLine(str, ",", false)).second)
 			throw std::logic_error("duplicate date: " + str);
 	}
 	if (m_data.size() < 1)
@@ -92,7 +91,7 @@ void BitcoinExchange::processInput(std::string const &t_path)
 			continue ;
 		try
 		{
-			line = parseLine(str, " | ");
+			line = parseLine(str, " | ", true);
 		}
 		catch (std::logic_error &e)
 		{
